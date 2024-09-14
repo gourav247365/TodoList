@@ -27,41 +27,41 @@ function DisplayTodo({ todo }) {
   }
 
   return (
-    <div className='w-1/2 flex flex-col  items-center bg-blue-300 border-blue-300 border-4 rounded-lg '>
-      <div className='w-full bg-pink-300 flex h-12 justify-between items-center rounded-md border-2'>
-        <div >
+    <div className='w-4/5 sm:w-1/2 flex flex-col  items-center bg-blue-300 border-blue-300 border-4 rounded-lg '>
+      <div className='w-full bg-pink-300 flex flex-col sm:flex-row h-fit justify-between items-center rounded-md border-2 relative'>
+        <div className='flex sm:block '>
           <input
             type="checkbox"
-            className='m-2'
+            className='m-2 absolute sm:static top-0 left-0'
             checked={todo.completed}
             onChange={()=>toggleCompleted(todo.id)}
           />
           <input
             type="text"
-            value={msg}
+            value={msg.toUpperCase()}
             ref={inputRef}
             onChange={(e)=>{setMsg(e.target.value)}}
             disabled={!edit}
-            className={` min-w-[440px] bg-transparent text-2xl font-md ${todo.completed ? " text-green-700 line-through " : ""} `}
+            className={` w-96 text-center sm:text-start text-lg bg-transparent sm:text-2xl sm:font-medium py-1 sm:py-2 ${todo.completed ? " text-green-700 line-through " : ""} `}
           />
         </div>
-        <div className='m-1'>
+        <div className='m-1 flex'>
           <button
             onClick={editBTN}
-            className='text-lg rounded-md border-white border-[1px] hover:border-black active:bg-blue-400 px-2  mx-1'
+            className='sm:text-xl bg-purple-300 rounded-md border-white border-[1px] hover:border-black active:bg-purple-400 sm:py-[2px] sm:px-4 px-2  mx-1'
           >{edit ? "Save " : "Edit"} </button>
           <button
-            className='text-lg rounded-md border-white border-[1px] hover:border-blackactive:bg-blue-400 px-2  mx-1'
+            className='sm:text-xl bg-purple-300 rounded-md border-white border-[1px] hover:border-black active:bg-purple-400 sm:py-[2px] sm:px-4 px-2  mx-1'
             onClick={() => deleteTodo(todo.id)}
           >Delete</button>
-          <button className=' w-[1.8rem] text-lg rounded-md border-white border-[1px] hover:border-black active:bg-blue-400 mx-1'
+          <button className=' w-[1.6rem] sm:w-[2.2rem] sm:text-xl bg-purple-300 rounded-md border-white border-[1px] hover:border-black active:bg-purple-400   mx-1'
             onClick={dropBtn}
           >{dropbox ? "-" : "+"}</button>
         </div>
       </div>
 
-      <div className={` bg-blue-300 w-full flex overflow-hidden items- ${dropbox ? "h-44" : "h-0"}  transition-all border-[3px] ${priority=="Low" ?  "border-green-500" : priority=="High"? "border-red-500" : priority=="Medium"? "border-orange-400" : "" } `}>
-        <form className={`flex flex-col justify-center items-center border-[1px]  h-full w-1/2 text-center ${priority=="Low" ?  "border-green-500" : priority=="High"? "border-red-500" : priority=="Medium"? "border-orange-400" : "" } `}
+      <div className={` bg-blue-300 w-full flex overflow-hidden items- ${dropbox ? " h-44 sm:h-56 " : "h-0"}  transition-all border-2 sm:border-[3px] ${priority=="Low" ?  "border-green-500" : priority=="High"? "border-red-500" : priority=="Medium"? "border-orange-400" : "" } `}>
+        <div className={`flex flex-col justify-center items-center border-[1px]  h-full w-1/2 text-center ${priority=="Low" ?  "border-green-500" : priority=="High"? "border-red-500" : priority=="Medium"? "border-orange-400" : "" } sm:text-xl`}
           onSubmit={(e) => {
             e.preventDefault()
             updateDesc(todo.id,desc)
@@ -79,32 +79,30 @@ function DisplayTodo({ todo }) {
           />
           <button 
            type='submit'
-           className='border-[1px] border-white hover:border-black active:bg-pink-400 rounded-md px-2 my-1'
+           className=' bg-purple-300 border-[1px] border-white hover:border-black active:bg-purple-400 rounded-md px-2 my-1  sm:py-[2px] sm:px-4 sm:text-xl'
           >Add</button>
-        </form>
+        </div>
         <div className={` border-[1px] h-full w-1/2 flex flex-col items-center justify-evenly ${priority=="Low" ?  "border-green-500" : priority=="High"? "border-red-500" : priority=="Medium"? "border-orange-400" : "" } `}>
-          <div className='bg-transparent border-black border-[1px] h-2/5 w-11/12 flex flex-col justify-evenly items-center  '  >
+          <div className='bg-transparent border-black border-[1px] h-2/5 w-11/12 flex flex-col justify-evenly items-center sm:text-xl '  >
             Due Date
-            <div
-              className='flex justify-center gap-2'
-            >
+            
               <input
                 type="date"
-                className='bg-transparent border-[1px] border-white hover:border-black active:bg-pink-400 rounded-md px-1'
+                className='bg-purple-300 w-5/6 sm:w-auto text-sm bg-transparent border-[1px] border-white hover:border-black active:bg-purple-400 rounded-md px-1 py-[2px] sm:py-[2px] sm:px-4 sm:text-xl'
                 value={date}
                 onChange={(e) => {
                   setDate(e.target.value)
                   updateDue(todo.id, e.target.value)
                 }}
               />
-            </div>
+            
           </div>
           <div className='bg-transparent border-black border-[1px] h-2/5 w-11/12 flex flex-col justify-center
-             items-center  '
+             items-center sm:text-xl '
           >
             Priority
             <div className='flex'>
-              <select value={priority} name="" id="" className='bg-transparent border-[1px] border-white hover:border-black active:bg-pink-400 rounded-md px-1'
+              <select value={priority} name="" id="" className=' bg-purple-300 bg-transparent border-[1px] border-white hover:border-black active:bg-purple-400 rounded-md px-1 py-[2px] sm:py-[2px] sm:px-4 sm:text-xl'
                 onChange={(e) => {
                   // console.log(e.target.value, typeof e.target.value);
                   setPriority(e.target.value)

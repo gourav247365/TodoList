@@ -8,7 +8,7 @@ export default function AddTodo() {
 
   return (
     <form
-      className='m-4 w-full flex justify-center' 
+      className='m-4 w-full flex flex-col sm:flex-row justify-center items-center gap-1' 
       onSubmit={(e)=> {
       e.preventDefault()
       if (!msg) 
@@ -19,14 +19,14 @@ export default function AddTodo() {
       
       <input
        type="text"
-       className='w-1/2 h-12 rounded-md text-2xl'
+       className='w-5/6 p-2 rounded-md sm:w-1/2 sm:text-2xl'
        value={msg}
        onChange={(e)=> setMsg(e.target.value)}
       />
       <button
        type='submit'
-       className='bg-green-300 text-2xl h-12 rounded-md border-2 border-white hover:border-blue-500 px-4 py-1' 
-      >Submit</button>
+       className='bg-green-300 sm:text-2xl rounded-md border-2 border-white hover:border-black px-2 py-1 ' 
+      >Add Todo</button>
     </form>
   )
 }
