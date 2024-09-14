@@ -88,7 +88,7 @@ function DisplayTodo({ todo }) {
             
               <input
                 type="date"
-                className='bg-purple-300 w-5/6 sm:w-auto text-sm bg-transparent border-[1px] border-white hover:border-black active:bg-purple-400 rounded-md px-1 py-[2px] sm:py-[2px] sm:px-4 sm:text-xl'
+                className='bg-purple-300 w-5/6 sm:w-auto text-sm  border-[1px] border-white hover:border-black active:bg-purple-400 rounded-md px-1 py-[2px] sm:py-[2px] sm:px-4 sm:text-xl'
                 value={date}
                 onChange={(e) => {
                   setDate(e.target.value)
@@ -102,7 +102,7 @@ function DisplayTodo({ todo }) {
           >
             Priority
             <div className='flex'>
-              <select value={priority} name="" id="" className=' bg-purple-300 bg-transparent border-[1px] border-white hover:border-black active:bg-purple-400 rounded-md px-1 py-[2px] sm:py-[2px] sm:px-4 sm:text-xl'
+              <select value={priority} name="" id="" className=' bg-purple-300  border-[1px] border-white hover:border-black active:bg-purple-400 rounded-md px-1 py-[2px] sm:py-[2px] sm:px-4 sm:text-xl'
                 onChange={(e) => {
                   // console.log(e.target.value, typeof e.target.value);
                   setPriority(e.target.value)
