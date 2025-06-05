@@ -28,7 +28,7 @@ function DisplayTodo({ todo }) {
 
   return (
     <div className='w-4/5 sm:w-2/5 flex flex-col  items-center bg-blue-300 border-blue-300 border-4 rounded-lg '>
-      <div className='w-full bg-pink-300 flex flex-col sm:flex-row h-fit justify-between items-center rounded-md border-2 relative'>
+      <div className='w-full bg-pink-300 flex flex-col sm:flex-row h-fit justify-between items-center rounded-md border-2 relative sm:p-1'>
         <div className='flex sm:block '>
           <input
             type="checkbox"
@@ -75,6 +75,7 @@ function DisplayTodo({ todo }) {
             value={desc}
             onChange={(e) => {
               setDesc(e.target.value)
+              updateDesc(todo.id,e.target.value)
             }}
           />
           <button 
