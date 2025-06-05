@@ -19,7 +19,8 @@ export default function AddTodo() {
       
       <input
        type="text"
-       className='w-5/6 p-2 rounded-md sm:w-1/2 sm:text-2xl'
+       placeholder='Enter Task to be done'
+       className='w-5/6 p-2 rounded-md sm:w-[400px] md:w-[550px] sm:text-2xl'
        value={msg}
        onChange={(e)=> setMsg(e.target.value)}
       />
